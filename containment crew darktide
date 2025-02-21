@@ -1,0 +1,61 @@
+# Welcome to Sonic Pi
+
+use_bpm 160
+
+
+live_loop :bassline do
+  use_synth :fm
+  play :e2, release: 2, cutoff: 80, amp: 0.8
+  sleep 1
+  play :e2, release: 2, cutoff: 80, amp: 0.8
+  sleep 1
+  play :e2, release: 2, cutoff: 80, amp: 0.8
+  sleep 1
+  play :e2, release: 2, cutoff: 80, amp: 0.8
+  sleep 1
+end
+sleep 4
+# Industrial Percussion Layer (rhythmic, clanking metal)
+live_loop :drums, sync: :bassline do
+  sample :drum_bass_hard, rate: 1, amp: 0.9
+  sleep 0.5
+  sample :drum_snare_soft, rate: 0.9, amp: 0.7
+  sleep 0.5
+  sample :drum_bass_hard, rate: 1, amp: 0.9
+  sleep 0.5
+  sample :drum_snare_soft, rate: 0.9, amp: 0.7
+  sleep 0.5
+end
+sleep 4
+# Atmospheric drone (creating ambient tension)
+live_loop :drone, sync: :bassline do
+  with_fx :reverb, mix: 0.6 do
+    play :e3, release: 4, sustain: 4, amp: 0.4
+    sleep 4
+    play :e3, release: 4, sustain: 4, amp: 0.4
+    sleep 4
+  end
+end
+sleep 4
+# Low industrial sounds (grinding metal, buzzing)
+live_loop :industrial_sounds, sync: :bassline do
+  with_fx :reverb, mix: 0.5 do
+    sample :elec_buzz, rate: 0.7, amp: 0.5
+    sleep 2
+    sample :elec_fuzz_tom, rate: 0.8, amp: 0.6
+    sleep 2
+    sample :elec_buzz, rate: 0.7, amp: 0.5
+    sleep 2
+    sample :elec_fuzz_tom, rate: 0.8, amp: 0.6
+    sleep 2
+  end
+end
+
+# High pitch tension (adding an eerie sense of danger)
+live_loop :high_tension, sync: :bassline do
+  use_synth :hollow
+  play :e5, release: 1, amp: 0.3, cutoff: 90
+  sleep 2
+  play :e5, release: 1, amp: 0.3, cutoff: 90
+  sleep 2
+end
