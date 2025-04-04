@@ -1,0 +1,82 @@
+use_bpm 110
+use_synth :piano
+
+define :mainpat do |a,b,c|
+  play a
+  sleep 0.5
+  play a
+  sleep 0.333
+  play b
+  sleep 0.333
+  play c
+  sleep 0.333
+end
+x=0.5
+#sample
+3.times do
+  sample "C:/Users/alexander_baybay/Downloads/omniman.mp3", amp: x
+  sleep 2
+  sample "C:/Users/alexander_baybay/Downloads/areyousure.mp3", amp: x
+  sleep 1
+  x=x+1
+end
+
+sample "C:/Users/alexander_baybay/Downloads/audiomass-output.mp3"
+sleep 5
+
+# intro
+mainpat :d3, :c3, :b2
+
+#song starts
+live_loop :melody do
+  play :c3
+  sleep 1
+  play :a2
+  sleep 1
+  play :a2
+  sleep 0.5
+  play :d3
+  sleep 0.5
+  play :d3
+  sleep 0.5
+  play :c3
+  sleep 0.5
+  play :b2
+  sleep 0.5
+  mainpat :d3, :c3, :b2
+  play :c3
+  sleep 1
+  play :a2
+  sleep 1
+  play :b2
+  sleep 0.5
+  play :g2
+  sleep 0.5
+  play :a2
+  sleep 1.5
+  play :d3
+  sleep 0.5
+  play :c3
+  sleep 0.5
+  play :d3
+  sleep 0.5
+  play :e3
+  sleep 1
+  play :e3
+  sleep 1
+  play :f3
+  sleep 0.5
+  play :d3
+  sleep 0.5
+  
+end
+sleep 6
+
+live_loop :sigma do
+  sleep 3
+  sample :bd_zum
+  sleep 3
+  sample "C:/Users/alexander_baybay/Downloads/bonk2.mp3"
+  
+  
+end
